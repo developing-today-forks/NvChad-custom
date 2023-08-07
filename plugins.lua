@@ -6,19 +6,17 @@ local plugins = {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-          require "custom.configs.null-ls"
-        end,
-      },
       { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-      { "folke/neodev.nvim", ft = "lua", opts = { experimental = { pathStrict = true } } },
+      { "folke/neodev.nvim",  ft = "lua",      opts = { experimental = { pathStrict = true } } },
     },
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
     end,
+  },
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    enabled = false,
   },
   {
     "folke/which-key.nvim",
@@ -137,6 +135,22 @@ local plugins = {
       } }
     end,
   },
+  ----------------------------------------- test ------------------------------------------
+  {
+    "mfussenegger/nvim-lint",
+    event = "BufWritePre",
+    config = function()
+      require "custom.configs.linter"
+    end,
+  },
+  {
+    "mhartington/formatter.nvim",
+    event = "LspAttach",
+    cmd = "FormatWrite",
+    config = function()
+      require "custom.configs.formatter"
+    end,
+  },
   ----------------------------------------- enhance plugins ------------------------------------------
   {
     "okuuva/auto-save.nvim",
@@ -188,7 +202,7 @@ local plugins = {
   },
   {
     "gbprod/cutlass.nvim",
-    keys = { "x", "d" },
+    event = "VeryLazy",
     opts = {
       cut_key = "x",
       override_del = true,
@@ -478,7 +492,7 @@ local plugins = {
       require("telescope").load_extension "ui-select"
     end,
   },
-  { "rainbowhxch/beacon.nvim", event = "BufReadPost" },
+  { "rainbowhxch/beacon.nvim",    event = "BufReadPost" },
   {
     "echasnovski/mini.nvim",
     event = "VeryLazy",
@@ -539,8 +553,8 @@ local plugins = {
     cmd = "GitBlameToggle",
   },
   {
-		"akinsho/git-conflict.nvim",
-		ft = "gitcommit",
+    "akinsho/git-conflict.nvim",
+    ft = "gitcommit",
     config = function()
       require("git-conflict").setup()
     end,
