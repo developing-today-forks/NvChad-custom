@@ -930,6 +930,27 @@ local plugins = {
       }
     end,
   },
+  
+  -- dim inactive windows
+  {
+    "andreadev-it/shade.nvim",
+    keys = "<Bslash>",
+    config = function()
+      require("shade").setup {
+        exclude_filetypes = { "NvimTree" },
+      }
+    end,
+  },
+  {
+    "elkowar/yuck.vim",
+    config = function()
+      vim.opt.ft = "yuck"
+    end,
+  },
+  {
+      "folke/tokyonight.nvim",
+      lazy = false,
+  },
 }
 
 return plugins
