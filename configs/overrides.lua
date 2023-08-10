@@ -89,6 +89,11 @@ M.treesitter = {
     "tsx",
     "html",
     "astro",
+    
+    -- etc
+    "css",
+    "toml",
+    "c"
   },
   indent = {
     enable = true,
