@@ -574,4 +574,11 @@ M.lspconfig = {
   },
 }
 
+
+M.lazyconfig = {
+  n = {
+    ["<leader>lc"] = {"<cmd>LazyConfig<CR>", "Open lazy.nvim configuration"}
+  }
+}
+
 return M
