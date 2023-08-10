@@ -175,6 +175,18 @@ M.mason = {
     "impl",
     "iferr",
     "staticcheck",
+
+    -- etc
+    "deno",
+    "tailwindcss-language-server",
+
+    -- shell
+    "shfmt",
+    "shellcheck",
+    "bash-language-server",
+
+    "clangd",
+    "clang-format",
   },
 
   ui = {
